@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEDA RAM PRAJAPAT</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #004aad;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.2rem;
+    }
+    section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #004aad;
+    }
+    .contact, .achievements, .services, .feedback {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .social-links a {
+      text-decoration: none;
+      color: #004aad;
+      margin-right: 1rem;
+      font-weight: bold;
+    }
+    .mic-button {
+      background-color: #004aad;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 1rem;
+    }
+    .download-btn {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      width: fit-content;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DEDA RAM PRAJAPAT</h1>
+    <p>असिस्टेंट ब्रांच मैनेजर, LIC ऑफ इंडिया</p>
+    <button class="mic-button" onclick="startListening()">🎤 बोलें</button>
+  </header>
+
+  <section id="about">
+    <h2>मेरे बारे में</h2>
+    <p>मैं LIC ऑफ इंडिया में असिस्टेंट ब्रांच मैनेजर के रूप में कार्यरत हूँ। मेरे पास सेल्स, मार्केटिंग और टीम मैनेजमेंट में 13 वर्षों का अनुभव है।</p>
+    <a class="download-btn" href="#" download>📄 रेज़्यूमे डाउनलोड करें</a>
+  </section>
+
+  <section id="achievements">
+    <h2>उपलब्धियाँ</h2>
+    <div class="achievements">
+      <p>🏆 2023 में बेस्ट ब्रांच परफॉर्मर अवॉर्ड</p>
+      <p>🥇 टॉप 10 सेल्स मैनेजर 2022</p>
+      <p>📈 5 बार वार्षिक लक्ष्य से अधिक प्रदर्शन</p>
+    </div>
+  </section>
+
+  <section id="services">
+    <h2>सेवाएं</h2>
+    <div class="services">
+      <p>✔️ जीवन बीमा योजनाओं की जानकारी</p>
+      <p>✔️ निवेश और सेविंग्स के सुझाव</p>
+      <p>✔️ क्लेम प्रक्रिया में मार्गदर्शन</p>
+    </div>
+  </section>
+
+  <section id="feedback">
+    <h2>फीडबैक</h2>
+    <div class="feedback">
+      <p>"DEDA जी ने मुझे सही पॉलिसी चुनने में बहुत मदद की।" – ग्राहक</p>
+      <p>"इनकी टीम से काम करवाना सरल और भरोसेमंद रहा।" – सहयोगी</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>संपर्क करें</h2>
+    <div class="contact">
+      <p>आप मुझे सोशल मीडिया पर फॉलो कर सकते हैं:</p>
+      <div class="social-links">
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function startListening() {
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = 'hi-IN';
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        const command = event.results[0][0].transcript.toLowerCase();
+        if (command.includes("संपर्क") || command.includes("contact")) {
+          document.getElementById("contact").scrollIntoView({ behavior: 'smooth' });
+        } else if (command.includes("मेरे बारे में") || command.includes("about")) {
+          document.getElementById("about").scrollIntoView({ behavior: 'smooth' });
+        } else if (command.includes("उपलब्धि") || command.includes("achievements")) {
+          document.getElementById("achievements").scrollIntoView({ behavior: 'smooth' });
+        } else if (command.includes("सेवा") || command.includes("services")) {
+          document.getElementById("services").scrollIntoView({ behavior: 'smooth' });
+        } else if (command.includes("फीडबैक") || command.includes("feedback")) {
+          document.getElementById("feedback").scrollIntoView({ behavior: 'smooth' });
+        } else {
+          alert("कमांड समझ नहीं आई: " + command);
+        }
+      };
+    }
+  </script>
+</body>
+</html>
